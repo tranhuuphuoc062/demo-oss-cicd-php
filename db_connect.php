@@ -6,9 +6,9 @@ error_reporting(E_ALL);
 // -------------------------------------------------------------
 
 // Thông tin kết nối (Hãy kiểm tra thật kỹ từng ký tự)
-$servername = "sqlXXX.infinityfree.com"; // CHÚ Ý: Lấy trong mục MySQL Details (không phải localhost)
+$servername = "sql100.infinityfree.com"; // CHÚ Ý: Lấy trong mục MySQL Details (không phải localhost)
 $username = "if0_40698005";              // Username host
-$password = "MẬT_KHẨU_CỦA_BẠN";          // Mật khẩu vPanel (lấy ở mục FTP Details nếu quên)
+$password = "eHcK8SXMxl3i";          // Mật khẩu vPanel (lấy ở mục FTP Details nếu quên)
 $dbname = "if0_40698005_demo";           // Tên database (phải có tiền tố if0_...)
 
 // Tạo kết nối
