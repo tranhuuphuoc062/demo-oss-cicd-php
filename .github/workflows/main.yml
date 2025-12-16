@@ -1,0 +1,30 @@
+name: Deploy Website to Hosting via FTP
+
+# Phần 1: Trigger (Sự kiện kích hoạt)
+on:
+  push:
+    branches:
+      - main  # Action này sẽ chạy mỗi khi có code mới được đẩy lên nhánh main
+
+# Phần 2: Jobs (Các công việc cần làm)
+jobs:
+  web-deploy:
+    name: 🎉 Deploy to Shared Hosting
+    runs-on: ubuntu-latest # Chạy trên máy ảo Ubuntu do GitHub cung cấp
+    
+    steps:
+    # Bước 2.1: Lấy code từ kho chứa GitHub về máy ảo
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+      
+    # Bước 2.2: Đồng bộ file từ máy ảo lên Hosting qua FTP
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: /htdocs/  # QUAN TRỌNG: Thay đổi thư mục này tùy hosting
+        # Hosting InfinityFree/ByetHost thường là: /htdocs/
+        # Hosting cPanel thường là: /public_html/
+        # Nếu để trống '/', nó sẽ upload vào thư mục gốc của tài khoản FTP
