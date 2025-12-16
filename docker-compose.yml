@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  # Service 1: Web Server (PHP + Apache)
+  web-app:
+    build: .
+    ports:
+      - "8080:80" # Truy cập ở máy thật bằng cổng 8080
+    volumes:
+      - .:/var/www/html # Đồng bộ code: Sửa ở máy thật, Docker cập nhật ngay
+    environment:
+      - DB_HOST=db-server # Tên service database bên dưới
+      - DB_USER=root
+      - DB_PASS=rootpassword
+      - DB_NAME=docker_demo_db
+    depends_on:
+      - db-server
+
+  # Service 2: Database Server (MySQL)
+  db-server:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: docker_demo_db
+    ports:
+      - "3307:3306" # Tránh trùng cổng 3306 nếu máy bạn đang cài MySQL khác
