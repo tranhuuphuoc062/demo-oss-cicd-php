@@ -9,7 +9,7 @@ error_reporting(E_ALL);
 $servername = "sql100.infinityfree.com"; // CHÚ Ý: Lấy trong mục MySQL Details (không phải localhost)
 $username = "if0_40698005";              // Username host
 $password = "eHcK8SXMxl3i";          // Mật khẩu vPanel (lấy ở mục FTP Details nếu quên)
-$dbname = "if0_40698005_demo";           // Tên database (phải có tiền tố if0_...)
+$dbname = "if0_40698005_test_db";           // Tên database (phải có tiền tố if0_...)
 
 // Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname);
